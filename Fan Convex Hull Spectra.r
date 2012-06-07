@@ -1,6 +1,7 @@
 ####Instructions####
 #Define parameters in the 'Parameter setup' section
 #This script returns the *deviation* from the convex hull
+
 #####Parameter setup#####
 #INSERT PARAMETERS YOU WISH TO SET HERE
 #FOR ALL DIRECTORIES, USE '/' instead of '\'
@@ -109,7 +110,6 @@ if(wantgraphs){
     dev.off()
   }
 
-  
   spec_melt <- melt(fan_matrix)
   hull_melt <- melt(fan_matrix_chull)
   names(spec_melt) <- c("spectra", "wavelength", "spectrum value")
@@ -117,11 +117,8 @@ if(wantgraphs){
   
   graph_data <- join(spec_melt, hull_melt, by=c("spectra", "wavelength"))
   
-  
-  
   d_ply(graph_data, "spectra", spec_graphs, .progress=progress_win(title="Plotting..."))
   
-  
 }
-###
 
+"Script complete!"
