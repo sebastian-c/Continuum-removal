@@ -72,7 +72,7 @@ c_hull_deviation <- function(.spectra, .all = 350:2500, .interval = 350:2500, .r
 
 #Define graphing function
 spec_graphs <- function(.specvec, .hullvec){
-  
+  png()
 }
 
 fan_spectra <- read.table(specname, header=T)
