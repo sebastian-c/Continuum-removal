@@ -1,16 +1,21 @@
 #####Parameter setup#####
 #INSERT PARAMETERS YOU WISH TO SET HERE
 
-#FOR ALL DIRECTORIE, USE '/' instead of '\'
+#FOR ALL DIRECTORIES, USE '/' instead of '\'
 
 #Set working directory
 wd <- "C:/Research/Fan Deng" #Set this to spectra location
 
 #Set destination directory
 dest_wd <- wd  #replace right side of arrow with proposed destination in quotes. 
+               #defaults to spectra location
+
+#Set spectra filename
+specname <- "for FanSpectra.txt"
 
 #Set boundaries
-max_wav <- 
+max_wav <- 350:2500 #Set minimum and maximum for your spectra
+int_wav <- 350:2500 #Set the wavelengths in which you are interested
 
 setwd("C:/Research/Fan Deng")
 
