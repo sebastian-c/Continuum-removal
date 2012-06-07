@@ -5,17 +5,7 @@ in_interval <- function(.all,.interval,...){
   ## a function to subset a particular waveband interval
   .in_interval = .all %in% .interval
 }
-###END REQUIRED###
 
-## ########################################################
-## some functions for filtering using 
-## deviations from the convex hull 
-## also known as continuum removal 
-## ########################################################
-## 
-## depends on
-## chunk reference functions-basic
-## chunk reference functions-mineralogy
 c_hull_deviation <- function(.spectra, .all = 350:2500, .interval = 350:2500, .return_hull = F,...){
   ## a function to perform deviations from the convex hull
   ## at the moment only tested on reflectance values
@@ -48,14 +38,3 @@ c_hull_deviation <- function(.spectra, .all = 350:2500, .interval = 350:2500, .r
   return(deviation)
   ##
 }
-
-
-# test<-read.csv("C:/Research/Spectra/testspec.csv")
-# 
-# hull_list <- list()
-# 
-# for(i in 1:nrow(test)){
-#   hull_list[[i]] <- c_hull_deviation(test[i,], .interval = 350:2500, .all = 350:2500, .return_hull = T)  
-# }
-# 
-
