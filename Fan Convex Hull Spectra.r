@@ -1,6 +1,6 @@
 ####Instructions####
 #Define parameters in the 'Parameter setup' section
-#
+#This script returns the *deviation* from the convex hull
 #####Parameter setup#####
 #INSERT PARAMETERS YOU WISH TO SET HERE
 #FOR ALL DIRECTORIES, USE '/' instead of '\'
@@ -20,7 +20,7 @@ max_wav <- 419:2500 #Set minimum and maximum for your spectra
 int_wav <- 419:2500 #Set the wavelengths in which you are interested
 
 #Do you want graphs?
-wantgraphs <- FALSE
+wantgraphs <- TRUE
 
 #MAGIC HAPPENS HERE:
 
@@ -28,6 +28,7 @@ wantgraphs <- FALSE
 
 setwd(wd)
 library(plyr)
+library(reshape)
 
 #Define function determining spectra in interval
 in_interval <- function(.all,.interval,...){
@@ -70,11 +71,6 @@ c_hull_deviation <- function(.spectra, .all = 350:2500, .interval = 350:2500, .r
   ##
 }
 
-#Define graphing function
-spec_graphs <- function(.specvec, .hullvec){
-  png()
-}
-
 fan_spectra <- read.table(specname, header=T)
 fan_matrix <- as.matrix(fan_spectra)
 dimnames(fan_matrix)[[2]]<-substring(names(fan_spectra),2)
@@ -86,6 +82,46 @@ dest_dir <- file.path(dest_wd, outname)
 
 write.table(fan_matrix_chull, dest_dir)
 
-if(wantgraphs) 
+if(wantgraphs){
+  
+  plot_dir <- file.path(dest_wd, "plots")
+  dir.create(plot_dir)
+  
+  #Define graphing function
+  spec_graphs <- function(x){
+    .specname <- paste(unique(x$spectra))
+    location <- file.path(plot_dir, paste(.specname, "hull", ".png", sep=""))
+    
+    png(file=location)
+    par(mfrow=c(1,2))
+    plot(x$wavelength,x$"spectrum value",
+         xlab="Wavelengths",
+         ylab="Reflectance",
+         main=paste(.specname, "without continuum removal"),
+         type="l")
+    plot(x$wavelength,x$"hull deviation value",
+         xlab="Wavelengths",
+         ylab="Reflectance",
+         main=paste(.specname, "hull deviation"),
+         type="l",
+         col="red")
+    
+    dev.off()
+  }
+
+  
+  spec_melt <- melt(fan_matrix)
+  hull_melt <- melt(fan_matrix_chull)
+  names(spec_melt) <- c("spectra", "wavelength", "spectrum value")
+  names(hull_melt) <- c("spectra", "wavelength", "hull deviation value")
+  
+  graph_data <- join(spec_melt, hull_melt, by=c("spectra", "wavelength"))
+  
+  
+  
+  d_ply(graph_data, "spectra", spec_graphs, .progress=progress_win(title="Plotting..."))
+  
+  
+}
 ###
 
