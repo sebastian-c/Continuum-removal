@@ -22,7 +22,7 @@ c_hull_deviation <- function(.spectra, .all = 350:2500, .interval = 350:2500, .r
   ## calculate convex hull
   c_hull <- chull(.data)
   ##
-  ## get the approprite region
+  ## get the appropriate region
   c_hull <- c_hull[which(c_hull == 1):length(c_hull)]
   ##
   ## calculate linear approximation between hull points
