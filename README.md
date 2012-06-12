@@ -4,11 +4,11 @@ Author: Sebastian Campbell (http://github.com/sebastian-c/)
 
 ## File Description
 
-* "Convex hull.r" - The original function by Michael (github.com/mnel) Nelson which gives deviation from the convex hull.
+* `Convex hull.r` - The original function by [Michael Nelson](http://github.com/mnel) which gives deviation from the convex hull.
 
-* "Fan Convex Hull Spectra.r" - A script requested by Fan Deng, computes hull removed spectra and produces graphs comparing the original and deviated spectra
+* `Fan Convex Hull Spectra.r` - A script requested by Fan Deng, computes hull removed spectra and produces graphs comparing the original and deviated spectra
 
-* "Possible convex formulae.r" - A script comparing the differences between the deviation from the convex hull and the hull removed spectra.
+* `Possible convex formulae.r` - A script comparing the differences between the deviation from the convex hull and the hull removed spectra.
 
 ## Licence
 
