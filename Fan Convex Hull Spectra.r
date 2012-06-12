@@ -62,13 +62,13 @@ c_hull_deviation <- function(.spectra, .all = 350:2500, .interval = 350:2500, .r
   linear_approx <- approx(.data[c_hull,], xout = .interval, method = 'linear', ties = 'mean')
   ##
   ## calculate the deviation from the convex hull
-  deviation <- ( linear_approx[[2]] - .spectra[.in_interval] )/linear_approx[[2]]
+  hull_correct <- .spectra[.in_interval]/linear_approx[[2]]
   ##
   ## add the hull if you wish
-  if(.return_hull == T){attr(deviation, 'hull') <-linear_approx[[2]]}
+  if(.return_hull == TRUE){attr(hull_correct, 'hull') <-linear_approx[[2]]}
   ##
   ## return
-  return(deviation)
+  return(hull_correct)
   ##
 }
 
@@ -91,7 +91,7 @@ if(wantgraphs){
   #Define graphing function
   spec_graphs <- function(x){
     .specname <- paste(unique(x$spectra))
-    location <- file.path(plot_dir, paste(.specname, "hull", ".png", sep=""))
+    location <- file.path(plot_dir, paste(.specname, " hull", ".png", sep=""))
     
     png(file=location)
     par(mfrow=c(1,2))
