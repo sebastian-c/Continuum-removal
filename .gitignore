@@ -1,3 +1,7 @@
 .Rproj.user
 .Rhistory
 .RData
+
+for Fanspectra.txt
+hull-removed spectra.txt
+plots
