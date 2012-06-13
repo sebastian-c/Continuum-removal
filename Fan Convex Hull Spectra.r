@@ -31,7 +31,6 @@ setwd(wd)
 
 library(plyr)
 library(reshape)
-library(tcltk)
 
 #Define function determining spectra in interval
 in_interval <- function(.all,.interval,...){
@@ -96,7 +95,7 @@ if(wantgraphs){
     location <- file.path(plot_dir, paste(.specname, " hull", ".png", sep=""))
     
     png(file=location)
-    par(mfrow=c(1,2))
+    par(mfrow=c(2,1))
     plot(x$wavelength,x$"spectrum value",
          xlab="Wavelengths",
          ylab="Reflectance",
