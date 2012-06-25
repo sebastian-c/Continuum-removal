@@ -1,3 +1,6 @@
+#This script is not required, it was a demonstration of the differences between
+#deviation and actual convex hull. As the chull function has changed, it is now
+#defunct.
 source("Fan Convex Hull Spectra.r")
 
 png("Original spectra.png")
@@ -19,6 +22,7 @@ plot(colnames(fan_matrix),fan_matrix[37,], type="l",
 lines(colnames(fan_matrix_chull),fan_matrix_chull[37,], col="red")
 dev.off()
 
+#Function to give convex-corrected spectra
 c_hull_other <- function(.spectra, .all = 350:2500, .interval = 350:2500, .return_hull = F,...){
   ## a function to perform deviations from the convex hull
   ## at the moment only tested on reflectance values
