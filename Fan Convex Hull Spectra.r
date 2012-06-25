@@ -13,8 +13,10 @@ dest_wd <- wd  #replace right side of arrow with proposed destination in quotes.
                #defaults to spectra location
 
 #Set input and output spectra filename
-specname <- "for FanSpectra.txt"
-outname <- "hull-removed spectra.txt"
+#specname <- "for FanSpectra.txt"
+specname <- file.choose()
+#outname <- "hull-removed spectra.txt"
+outname <- file.choose()
 
 #Set boundaries
 max_wav <- 419:2500 #Set minimum and maximum for your spectra
