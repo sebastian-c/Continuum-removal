@@ -1,6 +1,6 @@
 Continuum-removal
 =================
-Author: Sebastian Campbell (http://github.com/sebastian-c/)
+Author: [Sebastian Campbell](http://github.com/sebastian-c/)
 
 ## File Description
 
