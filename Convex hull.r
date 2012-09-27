@@ -6,7 +6,7 @@ in_interval <- function(.all,.interval,...){
   .in_interval = .all %in% .interval
 }
 
-c_hull_deviation <- function(.spectra, .all = 350:2500, .interval = 350:2500, .return_hull = F,...){
+c_hull_deviation <- function(.spectra, .all = 350:2500, .interval = .all, .return_hull = F,...){
   ## a function to perform deviations from the convex hull
   ## at the moment only tested on reflectance values
   ## not absorbance
